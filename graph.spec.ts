@@ -46,17 +46,30 @@ describe("graph", () => {
 			},
 			{
 				size: 5,
-				cases: [],
+				cases: [
+					[4, 3, 4, 3, 5],
+					[2, 5, 1, 1, 2],
+					[5, 4, 4, 1, 3],
+					[1, 1, 1, 2, 1],
+					[4, 0, 2, 3, 2],
+				],
 				expected: 28,
 			},
 			{
 				size: 6,
-				cases: [],
+				cases: [
+					[4, 3, 4, 3, 5, 2],
+					[2, 5, 1, 6, 2, 3],
+					[5, 4, 7, 1, 3, 4],
+					[0, 1, 3, 7, 3, 6],
+					[3, 0, 4, 3, 2, 3],
+					[2, 2, 1, 2, 2, 3],
+				],
 				expected: 48,
 			},
 		])("new Graph($size, $cases) -> $expected", ({ size, cases, expected }) => {
 			const graph = new Graph(size, cases);
-			graph.computeMaxRun();
+			graph.setMaxRun();
 			const maxRun = graph.getMaxRun();
 			expect(maxRun).toEqual(expected);
 		});
